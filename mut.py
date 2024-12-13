@@ -5,7 +5,7 @@ import math
 import random
 import os
 
-assert len(sys.argv) > 2, "Usage: fuzzer.py <input-file> <out-file>"
+assert len(sys.argv) > 2, "Usage: mut.py <input-file> <out-file>"
 
 file_path = sys.argv[1]
 out_path = sys.argv[2]

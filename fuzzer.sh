@@ -8,7 +8,16 @@ fi
 input_file=$(realpath "$1")
 output_file="$(dirname "$input_file")/$2"
 mutation_log_file="$output_file.log"
-tested_app=$(realpath "$3")
+
+if echo "$3" | grep -q '/'; then
+    tested_app=$(realpath "$3")
+else
+    tested_app=$(command -v "$3")
+    if [ -z "$tested_app" ]; then
+        echo "Error: Command '$3' not found."
+        exit 1
+    fi
+fi
 
 resolve_symlink() {
     target_file="$1"
